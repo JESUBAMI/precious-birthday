@@ -1,203 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Happy Birthday, Precious!</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Precious OS - Happy Birthday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<canvas id="confetti" aria-hidden="true"></canvas>
-<a id="top"></a>
-<noscript><style>#site[hidden]{display:block}.cover{display:none}</style></noscript>
-<button type="button" class="cover" id="cover" aria-label="Open your birthday surprise">
-  <span class="gift" aria-hidden="true">🎁</span>
-  <p class="for">Precious, you have a surprise</p>
-  <h2>Happy birthday!</h2>
-  <span class="hint">Tap anywhere to open</span>
-</button>
-<div id="site" hidden>
-<nav class="top" aria-label="Page sections"><div class="wrap">
-  <a class="brand" href="#top">Precious's day</a>
-  <ul>
-    <li><a href="#message">Message</a></li>
-    <li><a href="#photos">Summit</a></li>
-    <li><a href="#gold">Colours</a></li>
-    <li><a href="#video">Video</a></li>
-    <li><a href="#hope">Hope</a></li>
-    <li><a href="#wishes">Send a wish</a></li>
-    <li><a href="#prayers">Prayers</a></li>
-  </ul>
-</div></nav>
+  <canvas id="cf" aria-hidden="true"></canvas>
+  <button id="boot" type="button" aria-label="Log in to Precious OS">
+    <span class="logo">&#9670;</span>
+    <span class="h1">Precious OS</span>
+    <p class="ver">version 2026 &middot; birthday edition</p>
+    <span class="bar"><i></i></span>
+    <span class="login">Tap anywhere to log in</span>
+  </button>
+  <div id="desk" hidden>
+    <header class="menu"><b>&#9670; Precious OS</b><span class="mi">File</span><span class="mi">Memories</span><span
+        class="mi">Help</span><time id="clk"></time></header>
+    <main id="icons">
+      <button class="ico" data-app="photos"><i>&#128444;</i><span>Photos</span></button>
+      <button class="ico" data-app="msg"><i>&#128221;</i><span>Message</span></button>
+      <button class="ico" data-app="video"><i>&#127916;</i><span>Video</span></button>
+      <button class="ico" data-app="wish"><i>&#128172;</i><span>Wishes</span></button>
+      <button class="ico" data-app="pray"><i>&#128591;</i><span>Prayers</span></button>
+      <button class="ico" data-app="welcome"><i>&#127881;</i><span>Welcome</span></button>
+    </main>
 
-<div class="wrap">
-  <header class="hero">
-    <div>
-      <p class="date">October 14</p>
-      <h1>Happy birthday, <span>Precious!</span></h1>
-      <p class="lede">Today is all about you. Tap the button for a little celebration.</p>
-      <button class="btn" id="party" type="button">Celebrate Precious</button>
-    </div>
-    <div class="portrait">
-      <img src="images/01-precious-smiling-at-the-global-leadershi.jpg" alt="Precious smiling at the Global Leadership Summit 26">
-      <span class="tag">Global Leadership Summit '26</span>
-    </div>
-  </header>
-</div>
+    <section class="win" id="w-welcome" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Welcome</h2>
+      </div>
+      <div class="body wel"><img src="images/01-precious-smiling-at-the-global-leadershi.jpg"
+          alt="Precious smiling at the Global Leadership Summit" width="760" height="950">
+        <div>
+          <p class="k">October 14</p>
+          <h3>Happy birthday, <em>Precious!</em></h3>
+          <p>Today is all about you. This little computer was built just for your day. Explore the apps and enjoy.</p>
+          <button class="btn" id="party" type="button">Celebrate</button> <button class="btn ghost" data-app="photos"
+            type="button">Open Photos</button>
+        </div>
+      </div>
+    </section>
 
-<div class="zig" aria-hidden="true"></div>
+    <section class="win" id="w-photos" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Photos</h2>
+      </div>
+      <div class="body ph">
+        <div class="tabs" id="tabs" role="tablist" aria-label="Albums"></div>
+        <div class="grid" id="pgrid"></div>
+      </div>
+    </section>
 
-<section class="msg section-id" id="message">
-  <div class="wrap">
-    <h2>A message for you</h2>
-    <div class="letter">
-      <p>Precious, happy birthday! I thank God for your life, and I'm glad to call you a friend.</p>
-      <p>You work hard, you carry yourself with grace, and you keep growing. I pray this new age brings you <em>clarity, open doors, good health and every good thing you are hoping for</em>, from your project to your future.</p>
-      <p>Enjoy your day fully. You deserve it.</p>
-      <p class="sig">From Bambam</p>
-    </div>
+    <section class="win" id="w-msg" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Message.txt</h2>
+      </div>
+      <div class="body note">
+        <h3>A message for you</h3>
+        <p>Precious, happy birthday! I thank God for your life, and I'm glad to call you a friend.</p>
+        <p>You work hard, you carry yourself with grace, and you keep growing. I pray this new age brings you
+          <em>clarity, open doors, good health and every good thing you are hoping for</em>, from your project to your
+          future.</p>
+        <p>Enjoy your day fully. You deserve it.</p>
+        <p class="sig">From Bambam</p>
+      </div>
+    </section>
+
+    <section class="win" id="w-video" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Video Player</h2>
+      </div>
+      <div class="body vid"><video controls playsinline preload="metadata" poster="images/gallery-poster.jpg"
+          aria-label="Short video of Precious">
+          <source src="videos/one-more-moment.mp4" type="video/mp4">
+        </video>
+        <p class="hint">It has music, so turn your volume up.</p>
+      </div>
+    </section>
+
+    <section class="win" id="w-wish" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Wishes</h2>
+      </div>
+      <div class="body form">
+        <h3>Send Precious a wish</h3><label for="wn">Your name</label><input id="wn" type="text" autocomplete="name"
+          placeholder="Your name"><label for="wt">Your wish</label><textarea id="wt"
+          placeholder="Happy birthday, Precious! I wish you..."></textarea><a class="btn" id="wa" href="#"
+          target="_blank" rel="noopener">Send on WhatsApp</a>
+        <p class="warn" id="ww" role="status"></p>
+      </div>
+    </section>
+
+    <section class="win" id="w-pray" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Prayers</h2>
+      </div>
+      <div class="body pr">
+        <p class="big" id="pt" aria-live="polite">Tap the button to open your first prayer.</p><button class="btn"
+          id="pn" type="button">Open a prayer</button>
+      </div>
+    </section>
+
+    <nav class="dock" aria-label="Apps">
+      <button data-app="welcome" aria-label="Welcome">&#127881;</button><button data-app="photos"
+        aria-label="Photos">&#128444;</button><button data-app="msg" aria-label="Message">&#128221;</button><button
+        data-app="video" aria-label="Video">&#127916;</button><button data-app="wish"
+        aria-label="Wishes">&#128172;</button><button data-app="pray" aria-label="Prayers">&#128591;</button>
+    </nav>
   </div>
-</section>
-
-<div class="zig lilac" aria-hidden="true"></div>
-
-<section class="gal section-id" id="photos">
-  <div class="wrap" style="padding-top:56px">
-    <h2>Moments from the Summit</h2>
-    <div class="grid"><button type="button" aria-label="Open photo: Precious standing on the paved walkway, smiling"><img src="images/02-precious-standing-on-the-paved-walkway-s.jpg" alt="Precious standing on the paved walkway, smiling" loading="lazy"></button><button type="button" aria-label="Open photo: Precious and Bambam smiling together"><img src="images/03-precious-and-bambam-smiling-together.jpg" alt="Precious and Bambam smiling together" loading="lazy"></button><button type="button" aria-label="Open photo: Precious and Bambam posing with arms crossed"><img src="images/04-precious-and-bambam-posing-with-arms-cro.jpg" alt="Precious and Bambam posing with arms crossed" loading="lazy"></button><button type="button" aria-label="Open photo: Full-length photo of Precious and Bambam"><img src="images/05-full-length-photo-of-precious-and-bambam.jpg" alt="Full-length photo of Precious and Bambam" loading="lazy"></button><button type="button" aria-label="Open photo: Precious looking back over her shoulder at the Summit"><img src="images/06-precious-looking-back-over-her-shoulder-.jpg" alt="Precious looking back over her shoulder at the Summit" loading="lazy"></button></div>
-    <p class="grid-note">Tap any photo to see it larger.</p>
-  </div>
-</section>
-<div class="zig lilac" aria-hidden="true"></div>
-
-<section class="gal section-id" id="summit-family">
-  <div class="wrap" style="padding-top:56px">
-    <h2>The Summit family</h2>
-    <div class="feature wide"><button type="button" aria-label="Open group photo of the Summit team"><img src="images/07-large-group-photo-of-the-summit-team-sta.jpg" alt="Large group photo of the Summit team standing on the grass beside the Leaders Have Influence photo frame" loading="lazy"></button></div>
-    <p class="cap">GLS Ogbomoso, University Baptist Church: a big group, all smiling.</p>
-    <div class="feature wide"><button type="button" aria-label="Open photo in the Leaders Have Influence frame"><img src="images/08-four-friends-posing-around-the-leaders-h.jpg" alt="Four friends posing around the Leaders Have Influence photo frame" loading="lazy"></button></div>
-  </div>
-</section>
-
-
-<div class="zig" aria-hidden="true"></div>
-
-<section class="gal">
-  <div class="wrap" style="padding-top:56px">
-    <h2>Matching in orange</h2>
-    <div class="feature"><button type="button" aria-label="Open photo: Precious and Bambam in matching orange outfits"><img src="images/09-precious-and-bambam-in-matching-orange-o.jpg" alt="Precious and Bambam in matching orange outfits and head wraps" loading="lazy"></button></div>
-  </div>
-</section>
-
-<div class="zig" aria-hidden="true"></div>
-
-
-<section class="chap gold section-id" id="gold">
-  <div class="wrap">
-    <header class="chap-head"><span class="num" aria-hidden="true">01</span><div><h2>Golden hour</h2><p>Sunshine looks good on you.</p></div></header>
-    <div class="masonry"><button type="button" aria-label="Open photo: Precious in a mustard wrap dress, smiling with her eyes closed"><img src="images/gallery-01-b8.jpg" width="810" height="1080" alt="Precious in a mustard wrap dress, smiling with her eyes closed" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a mustard wrap dress, hand resting on her head"><img src="images/gallery-02-b9.jpg" width="810" height="1080" alt="Precious in a mustard wrap dress, hand resting on her head" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a mustard wrap dress with a hand on her hip"><img src="images/gallery-03-b10.jpg" width="810" height="1080" alt="Precious in a mustard wrap dress with a hand on her hip" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a mustard wrap dress, waving a little"><img src="images/gallery-04-b11.jpg" width="608" height="806" alt="Precious in a mustard wrap dress, waving a little" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a white top and yellow floral skirt, smiling"><img src="images/gallery-05-b2.jpg" width="810" height="1080" alt="Precious in a white top and yellow floral skirt, smiling" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a satin top and orange print trousers, looking down"><img src="images/gallery-06-a17.jpg" width="810" height="1080" alt="Precious in a satin top and orange print trousers, looking down" loading="lazy"></button></div>
-  </div>
-</section>
-
-<section class="chap pink section-id" id="pink">
-  <div class="wrap">
-    <header class="chap-head"><span class="num" aria-hidden="true">02</span><div><h2>Pink and coral</h2><p>Soft colours, strong presence.</p></div></header>
-    <div class="masonry"><button type="button" aria-label="Open photo: Precious in a pink tie-dye dress, arms crossed in front of a brick wall"><img src="images/gallery-07-a8.jpg" width="820" height="1093" alt="Precious in a pink tie-dye dress, arms crossed in front of a brick wall" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a pink dress posing by a brick wall"><img src="images/gallery-08-b7.jpg" width="810" height="1080" alt="Precious in a pink dress posing by a brick wall" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a pink dress, smiling back over her shoulder on the grass"><img src="images/gallery-09-a20.jpg" width="810" height="1080" alt="Precious in a pink dress, smiling back over her shoulder on the grass" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a tie-dye top and black jeans, hands up"><img src="images/gallery-10-b1.jpg" width="810" height="1080" alt="Precious in a tie-dye top and black jeans, hands up" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a floral dress sitting on a bench in the evening light"><img src="images/gallery-11-a1.jpg" width="820" height="1093" alt="Precious in a floral dress sitting on a bench in the evening light" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a coral print dress, blowing a kiss"><img src="images/gallery-12-a6.jpg" width="820" height="1093" alt="Precious in a coral print dress, blowing a kiss" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a coral print dress, smiling back over her shoulder"><img src="images/gallery-13-b3.jpg" width="810" height="1080" alt="Precious in a coral print dress, smiling back over her shoulder" loading="lazy"></button></div>
-  </div>
-</section>
-
-<section class="chap blue section-id" id="blue">
-  <div class="wrap">
-    <header class="chap-head"><span class="num" aria-hidden="true">03</span><div><h2>Blue and bold prints</h2><p>Colour is a language you speak well.</p></div></header>
-    <div class="masonry"><button type="button" aria-label="Open photo: Precious in glasses and a blue and pink Ankara dress"><img src="images/gallery-14-a3.jpg" width="820" height="1093" alt="Precious in glasses and a blue and pink Ankara dress" loading="lazy"></button><button type="button" aria-label="Open photo: Precious adjusting her glasses in a blue and pink Ankara dress"><img src="images/gallery-15-a4.jpg" width="820" height="1093" alt="Precious adjusting her glasses in a blue and pink Ankara dress" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a red and pink geometric print dress holding a small black bag"><img src="images/gallery-16-a7.jpg" width="820" height="1093" alt="Precious in a red and pink geometric print dress holding a small black bag" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a light blue knit top and jeans on a quiet road"><img src="images/gallery-17-a5.jpg" width="820" height="1093" alt="Precious in a light blue knit top and jeans on a quiet road" loading="lazy"></button><button type="button" aria-label="Open photo: Precious smiling in a light blue knit top and jeans"><img src="images/gallery-18-a19.jpg" width="810" height="1080" alt="Precious smiling in a light blue knit top and jeans" loading="lazy"></button></div>
-  </div>
-</section>
-
-<section class="chap classic section-id" id="classic">
-  <div class="wrap">
-    <header class="chap-head"><span class="num" aria-hidden="true">04</span><div><h2>Everyday classics</h2><p>Simple looks, worn well.</p></div></header>
-    <div class="masonry"><button type="button" aria-label="Open photo: Precious in a brown and cream striped dress with a headwrap"><img src="images/gallery-19-a2.jpg" width="820" height="1093" alt="Precious in a brown and cream striped dress with a headwrap" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a striped dress, smiling and making a peace sign"><img src="images/gallery-20-a9.jpg" width="820" height="1093" alt="Precious in a striped dress, smiling and making a peace sign" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a striped tee and denim skirt in front of a campus building"><img src="images/gallery-21-a15.jpg" width="820" height="1093" alt="Precious in a striped tee and denim skirt in front of a campus building" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a striped tee and jeans with her arms crossed"><img src="images/gallery-22-a16.jpg" width="820" height="1093" alt="Precious in a striped tee and jeans with her arms crossed" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a striped tee and black jeans posing between two cars"><img src="images/gallery-23-a18.jpg" width="810" height="1080" alt="Precious in a striped tee and black jeans posing between two cars" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a red top and black skirt"><img src="images/gallery-24-b5.jpg" width="810" height="1080" alt="Precious in a red top and black skirt" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a green top and black skirt with her hands on her hips"><img src="images/gallery-25-b6.jpg" width="810" height="1080" alt="Precious in a green top and black skirt with her hands on her hips" loading="lazy"></button><button type="button" aria-label="Open photo: Precious in a black and white geometric top, smiling by a hedge"><img src="images/gallery-26-b12.jpg" width="810" height="1080" alt="Precious in a black and white geometric top, smiling by a hedge" loading="lazy"></button></div>
-  </div>
-</section>
-
-
-<section class="chap reel-sec section-id" id="video">
-  <div class="wrap reel-wrap">
-    <header class="chap-head"><span class="num" aria-hidden="true">05</span><div><h2>One more moment</h2><p>Press play. It has music, so turn your volume up.</p></div></header>
-    <div class="reel"><video controls playsinline preload="metadata" poster="images/gallery-poster.jpg" aria-label="Short video of Precious in a coral print top and light jeans"><source src="videos/one-more-moment.mp4" type="video/mp4"></video></div>
-  </div>
-</section>
-
-
-<section class="chap hope section-id" id="hope">
-  <div class="wrap">
-    <header class="chap-head"><span class="num" aria-hidden="true">06</span><div><h2>Hope</h2><p>Quiet, calm and in black and white.</p></div></header>
-    <div class="masonry"><button type="button" aria-label="Open photo: Black and white portrait of Precious"><img src="images/gallery-27-a10.jpg" width="619" height="1100" alt="Black and white portrait of Precious" loading="lazy"></button><button type="button" aria-label="Open photo: Black and white portrait of Precious looking at the camera"><img src="images/gallery-28-a11.jpg" width="619" height="1100" alt="Black and white portrait of Precious looking at the camera" loading="lazy"></button><button type="button" aria-label="Open photo: Black and white portrait of Precious looking down"><img src="images/gallery-29-a12.jpg" width="619" height="1100" alt="Black and white portrait of Precious looking down" loading="lazy"></button><button type="button" aria-label="Open photo: Black and white portrait of Precious with a small bird and the word hope written below"><img src="images/gallery-30-a13.jpg" width="619" height="1100" alt="Black and white portrait of Precious with a small bird and the word hope written below" loading="lazy"></button><button type="button" aria-label="Open photo: Black and white portrait of Precious smiling softly"><img src="images/gallery-31-a14.jpg" width="619" height="1100" alt="Black and white portrait of Precious smiling softly" loading="lazy"></button></div>
-  </div>
-</section>
-
-
-<section class="begin section-id" id="begin">
-  <div class="wrap begin-wrap">
-    <figure><button type="button" aria-label="Open photo: a baby photo"><img src="images/gallery-32-b4.jpg" width="499" height="660" alt="An old baby photo of a little girl in a white top and peach shorts, sitting on a red cushion" loading="lazy"></button></figure>
-    <div>
-      <h2>Where it all began</h2>
-      <p>Look how far you have come. Happy birthday, Precious. May this new age be your best chapter yet.</p>
-      <p class="sig">From Bambam</p>
-      <button class="btn" id="party2" type="button">One more celebration</button>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-<dialog id="viewer" aria-label="Photo viewer">
-  <div class="v-stage"><img id="v-img" alt=""></div>
-  <div class="v-bar">
-    <button type="button" id="v-prev" aria-label="Previous photo">&larr; Prev</button>
-    <span id="v-count" aria-live="polite"></span>
-    <button type="button" id="v-next" aria-label="Next photo">Next &rarr;</button>
-    <button type="button" id="v-close" aria-label="Close viewer">Close</button>
-  </div>
-</dialog>
-
-<section class="send section-id" id="wishes">
-  <div class="wrap">
-    <h2>Send Precious a wish</h2>
-    <p class="sub">Write your birthday message below. Tap the button and WhatsApp opens with it ready to send.</p>
-    <div class="box">
-      <label for="w-name">Your name</label>
-      <input id="w-name" type="text" autocomplete="name" placeholder="Your name">
-      <label for="w-text">Your wish for Precious</label>
-      <textarea id="w-text" placeholder="Happy birthday, Precious! I wish you..."></textarea>
-      <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Send my wish on WhatsApp</a>
-      <p class="warn" id="w-warn" role="status"></p>
-      <p class="note">Your message goes straight to Precious on WhatsApp.</p>
-    </div>
-  </div>
-</section>
-
-<section class="wish section-id" id="prayers">
-  <div class="wrap">
-    <h2>Birthday prayers for you</h2>
-    <div class="card" aria-live="polite"><p id="prayer">Tap the button below to open your first prayer.</p></div>
-    <div class="row">
-      <button class="btn" id="next" type="button">Open a prayer</button>
-      <button class="btn alt" id="theme" type="button">Switch light / dark</button>
-    </div>
-  </div>
-</section>
-
-<div class="zig" aria-hidden="true"></div>
-<footer>Made with love by Bambam, for Precious's birthday.</footer>
-
-</div>
-<script src="script.js"></script>
+  <dialog id="lb" aria-label="Photo viewer">
+    <div class="st"><img id="li" alt=""></div>
+    <div class="lbar"><button id="lp" type="button">&larr; Prev</button><span id="lc" aria-live="polite"></span><button
+        id="ln" type="button">Next &rarr;</button><button id="lx" type="button">Close</button></div>
+  </dialog>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
