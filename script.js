@@ -15,15 +15,33 @@
     if(i===prayers.length) burst();
   });
 
-  // photo viewer
-  var dlg=document.getElementById('viewer'), vimg=document.getElementById('viewer-img');
-  document.querySelectorAll('.grid button, .feature button').forEach(function(b){
-    b.addEventListener('click',function(){
-      vimg.src=b.querySelector('img').src; vimg.alt=b.querySelector('img').alt;
-      if(dlg.showModal) dlg.showModal();
-    });
+  // photo viewer with next / previous (all photos, in page order)
+  var dlg=document.getElementById('viewer'), vimg=document.getElementById('v-img'),
+      vcount=document.getElementById('v-count'),
+      btns=Array.prototype.slice.call(document.querySelectorAll('.grid button, .feature button, .masonry button, .begin figure button')),
+      idx=0, lastBtn=null;
+  function show(i){
+    idx=(i+btns.length)%btns.length;
+    var im=btns[idx].querySelector('img');
+    vimg.src=im.getAttribute('src'); vimg.alt=im.alt;
+    vcount.textContent=(idx+1)+' / '+btns.length;
+  }
+  btns.forEach(function(b,i){ b.addEventListener('click',function(){ lastBtn=b; show(i); if(dlg.showModal) dlg.showModal(); }); });
+  document.getElementById('v-prev').addEventListener('click',function(){show(idx-1)});
+  document.getElementById('v-next').addEventListener('click',function(){show(idx+1)});
+  document.getElementById('v-close').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('close',function(){ if(lastBtn) lastBtn.focus(); });
+  dlg.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight') show(idx+1);
+    if(e.key==='ArrowLeft') show(idx-1);
   });
-  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+  var sx=null;
+  dlg.addEventListener('touchstart',function(e){sx=e.changedTouches[0].clientX},{passive:true});
+  dlg.addEventListener('touchend',function(e){
+    if(sx===null) return;
+    var dx=e.changedTouches[0].clientX-sx; sx=null;
+    if(Math.abs(dx)>50) show(dx<0?idx+1:idx-1);
+  },{passive:true});
 
   // theme toggle
   var root=document.documentElement;
@@ -85,4 +103,5 @@
     else { ww.textContent=''; waLink(); }
   });
   document.getElementById('party').addEventListener('click',burst);
+  var p2=document.getElementById('party2'); if(p2) p2.addEventListener('click',burst);
 })();
