@@ -1,58 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Precious OS - Happy Birthday</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Precious OS - Happy Birthday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<canvas id="cf" aria-hidden="true"></canvas>
-<button id="boot" type="button" aria-label="Log in to Precious OS">
-  <span class="logo">&#9670;</span>
-  <span class="h1">Precious OS</span>
-  <p class="ver">version 2026 &middot; birthday edition</p>
-  <span class="bar"><i></i></span>
-  <span class="login">Tap anywhere to log in</span>
-</button>
-<div id="desk" hidden>
-  <header class="menu"><b>&#9670; Precious OS</b><span class="mi">File</span><span class="mi">Memories</span><span class="mi">Help</span><time id="clk"></time></header>
-  <main id="icons">
-    <button class="ico" data-app="photos"><i>&#128444;</i><span>Photos</span></button>
-    <button class="ico" data-app="msg"><i>&#128221;</i><span>Message</span></button>
-    <button class="ico" data-app="video"><i>&#127916;</i><span>Video</span></button>
-    <button class="ico" data-app="wish"><i>&#128172;</i><span>Wishes</span></button>
-    <button class="ico" data-app="pray"><i>&#128591;</i><span>Prayers</span></button>
-    <button class="ico" data-app="welcome"><i>&#127881;</i><span>Welcome</span></button>
-  </main>
+  <canvas id="cf" aria-hidden="true"></canvas>
+  <button id="boot" type="button" aria-label="Log in to Precious OS">
+    <span class="logo">&#9670;</span>
+    <span class="h1">Precious OS</span>
+    <p class="ver">version 2026 &middot; birthday edition</p>
+    <span class="bar"><i></i></span>
+    <span class="login">Tap anywhere to log in</span>
+  </button>
+  <div id="desk" hidden>
+    <header class="menu"><b>&#9670; Precious OS</b><span class="mi">File</span><span class="mi">Memories</span><span
+        class="mi">Help</span><time id="clk"></time></header>
+    <main id="icons">
+      <button class="ico" data-app="photos"><i>&#128444;</i><span>Photos</span></button>
+      <button class="ico" data-app="msg"><i>&#128221;</i><span>Message</span></button>
+      <button class="ico" data-app="video"><i>&#127916;</i><span>Video</span></button>
+      <button class="ico" data-app="wish"><i>&#128172;</i><span>Wishes</span></button>
+      <button class="ico" data-app="pray"><i>&#128591;</i><span>Prayers</span></button>
+      <button class="ico" data-app="welcome"><i>&#127881;</i><span>Welcome</span></button>
+    </main>
 
-  <section class="win" id="w-welcome" hidden><div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z" aria-label="Maximize"></button></span><h2>Welcome</h2></div>
-    <div class="body wel"><img src="images/01-precious-smiling-at-the-global-leadershi.jpg" alt="Precious smiling at the Global Leadership Summit" width="760" height="950">
-      <div><p class="k">October 14</p><h3>Happy birthday, <em>Precious!</em></h3><p>Today is all about you. This little computer was built just for your day. Explore the apps and enjoy.</p><button class="btn" id="party" type="button">Celebrate</button> <button class="btn ghost" data-app="photos" type="button">Open Photos</button></div></div></section>
+    <section class="win" id="w-welcome" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Welcome</h2>
+      </div>
+      <div class="body wel"><img src="images/01-precious-smiling-at-the-global-leadershi.jpg"
+          alt="Precious smiling at the Global Leadership Summit" width="760" height="950">
+        <div>
+          <p class="k">October 14</p>
+          <h3>Happy birthday, <em>Precious!</em></h3>
+          <p>Today is all about you. This little computer was built just for your day. Explore the apps and enjoy.</p>
+          <button class="btn" id="party" type="button">Celebrate</button> <button class="btn ghost" data-app="photos"
+            type="button">Open Photos</button>
+        </div>
+      </div>
+    </section>
 
-  <section class="win" id="w-photos" hidden><div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z" aria-label="Maximize"></button></span><h2>Photos</h2></div>
-    <div class="body ph"><div class="tabs" id="tabs" role="tablist" aria-label="Albums"></div><div class="grid" id="pgrid"></div></div></section>
+    <section class="win" id="w-photos" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Photos</h2>
+      </div>
+      <div class="body ph">
+        <div class="tabs" id="tabs" role="tablist" aria-label="Albums"></div>
+        <div class="grid" id="pgrid"></div>
+      </div>
+    </section>
 
-  <section class="win" id="w-msg" hidden><div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z" aria-label="Maximize"></button></span><h2>Message.txt</h2></div>
-    <div class="body note"><h3>A message for you</h3><p>Precious, happy birthday! I thank God for your life, and I'm glad to call you a friend.</p><p>You work hard, you carry yourself with grace, and you keep growing. I pray this new age brings you <em>clarity, open doors, good health and every good thing you are hoping for</em>, from your project to your future.</p><p>Enjoy your day fully. You deserve it.</p><p class="sig">From Bambam</p></div></section>
+    <section class="win" id="w-msg" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Message.txt</h2>
+      </div>
+      <div class="body note">
+        <h3>A message for you</h3>
+        <p>Precious, happy birthday! I thank God for your life, and I'm glad to call you a friend.</p>
+        <p>You work hard, you carry yourself with grace, and you keep growing. I pray this new age brings you
+          <em>clarity, open doors, good health and every good thing you are hoping for</em>, from your project to your
+          future.</p>
+        <p>Enjoy your day fully. You deserve it.</p>
+        <p class="sig">From Bambam</p>
+      </div>
+    </section>
 
-  <section class="win" id="w-video" hidden><div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z" aria-label="Maximize"></button></span><h2>Video Player</h2></div>
-    <div class="body vid"><video controls playsinline preload="metadata" poster="images/gallery-poster.jpg" aria-label="Short video of Precious"><source src="videos/one-more-moment.mp4" type="video/mp4"></video><p class="hint">It has music, so turn your volume up.</p></div></section>
+    <section class="win" id="w-video" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Video Player</h2>
+      </div>
+      <div class="body vid"><video controls playsinline preload="metadata" poster="images/gallery-poster.jpg"
+          aria-label="Short video of Precious">
+          <source src="videos/one-more-moment.mp4" type="video/mp4">
+        </video>
+        <p class="hint">It has music, so turn your volume up.</p>
+      </div>
+    </section>
 
-  <section class="win" id="w-wish" hidden><div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z" aria-label="Maximize"></button></span><h2>Wishes</h2></div>
-    <div class="body form"><h3>Send Precious a wish</h3><label for="wn">Your name</label><input id="wn" type="text" autocomplete="name" placeholder="Your name"><label for="wt">Your wish</label><textarea id="wt" placeholder="Happy birthday, Precious! I wish you..."></textarea><a class="btn" id="wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a><p class="warn" id="ww" role="status"></p></div></section>
+    <section class="win" id="w-wish" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Wishes</h2>
+      </div>
+      <div class="body form">
+        <h3>Send Precious a wish</h3><label for="wn">Your name</label><input id="wn" type="text" autocomplete="name"
+          placeholder="Your name"><label for="wt">Your wish</label><textarea id="wt"
+          placeholder="Happy birthday, Precious! I wish you..."></textarea><a class="btn" id="wa" href="#"
+          target="_blank" rel="noopener">Send on WhatsApp</a>
+        <p class="warn" id="ww" role="status"></p>
+      </div>
+    </section>
 
-  <section class="win" id="w-pray" hidden><div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z" aria-label="Maximize"></button></span><h2>Prayers</h2></div>
-    <div class="body pr"><p class="big" id="pt" aria-live="polite">Tap the button to open your first prayer.</p><button class="btn" id="pn" type="button">Open a prayer</button></div></section>
+    <section class="win" id="w-pray" hidden>
+      <div class="tb"><span class="dots"><button class="x" aria-label="Close"></button><button class="z"
+            aria-label="Maximize"></button></span>
+        <h2>Prayers</h2>
+      </div>
+      <div class="body pr">
+        <p class="big" id="pt" aria-live="polite">Tap the button to open your first prayer.</p><button class="btn"
+          id="pn" type="button">Open a prayer</button>
+      </div>
+    </section>
 
-  <nav class="dock" aria-label="Apps">
-    <button data-app="welcome" aria-label="Welcome">&#127881;</button><button data-app="photos" aria-label="Photos">&#128444;</button><button data-app="msg" aria-label="Message">&#128221;</button><button data-app="video" aria-label="Video">&#127916;</button><button data-app="wish" aria-label="Wishes">&#128172;</button><button data-app="pray" aria-label="Prayers">&#128591;</button>
-  </nav>
-</div>
-<dialog id="lb" aria-label="Photo viewer"><div class="st"><img id="li" alt=""></div><div class="lbar"><button id="lp" type="button">&larr; Prev</button><span id="lc" aria-live="polite"></span><button id="ln" type="button">Next &rarr;</button><button id="lx" type="button">Close</button></div></dialog>
-<script src="data.js"></script>
-<script src="script.js"></script>
+    <nav class="dock" aria-label="Apps">
+      <button data-app="welcome" aria-label="Welcome">&#127881;</button><button data-app="photos"
+        aria-label="Photos">&#128444;</button><button data-app="msg" aria-label="Message">&#128221;</button><button
+        data-app="video" aria-label="Video">&#127916;</button><button data-app="wish"
+        aria-label="Wishes">&#128172;</button><button data-app="pray" aria-label="Prayers">&#128591;</button>
+    </nav>
+  </div>
+  <dialog id="lb" aria-label="Photo viewer">
+    <div class="st"><img id="li" alt=""></div>
+    <div class="lbar"><button id="lp" type="button">&larr; Prev</button><span id="lc" aria-live="polite"></span><button
+        id="ln" type="button">Next &rarr;</button><button id="lx" type="button">Close</button></div>
+  </dialog>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
