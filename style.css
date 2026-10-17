@@ -336,6 +336,42 @@ button {
     height: auto
 }
 
+.portrait-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    min-height: 150px;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: linear-gradient(145deg, rgba(255, 92, 147, .32), rgba(120, 90, 180, .34));
+    color: var(--ink)
+}
+
+.portrait-initials {
+    display: flex;
+    gap: 8px
+}
+
+.portrait-initials span {
+    width: 52px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    font: 700 1.3rem var(--d)
+}
+
+.portrait-placeholder small {
+    color: var(--mut);
+    letter-spacing: .1em;
+    text-transform: uppercase
+}
+
 .k {
     color: var(--pink);
     font-weight: 700;
@@ -391,6 +427,16 @@ button {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
     gap: 8px
+}
+
+.photo-empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 26px 18px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    color: var(--mut);
+    text-align: center
 }
 
 .grid button {

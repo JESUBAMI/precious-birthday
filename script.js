@@ -1,6 +1,6 @@
 (function () {
   var $ = function (s, r) { return (r || document).querySelector(s) }, $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)) };
-  var mobile = function () { return innerWidth <= 760 }, order = [], placed = {};
+  var mobile = function () { return innerWidth <= 760 }, order = [], placed = {}, settings = window.BIRTHDAY_SETTINGS || {}, photos = window.PHOTOS || [];
 
   /* confetti */
   var cv = $('#cf'), cx = cv.getContext('2d'), bits = [], run = false, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -55,13 +55,14 @@
   function clk() { var d = new Date(); $('#clk').textContent = d.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) + '  ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) } clk(); setInterval(clk, 30000);
 
   /* photos */
-  var cats = ['All', 'Summit', 'Golden', 'Pink', 'Blue', 'Classics', 'Hope', 'Throwback'], cur = 'All', list = [];
+  var cats = ['All'], cur = 'All', list = [];
+  photos.forEach(function (p) { if (cats.indexOf(p.c) === -1) cats.push(p.c) });
   function render() {
-    list = PHOTOS.filter(function (p) { return cur === 'All' || p.c === cur });
-    $('#pgrid').innerHTML = list.map(function (p, i) { return '<button type="button" data-i="' + i + '" aria-label="Open photo: ' + p.a.replace(/"/g, '&quot;') + '"><img src="' + p.s + '" alt="' + p.a.replace(/"/g, '&quot;') + '" loading="lazy"></button>' }).join('');
+    list = photos.filter(function (p) { return cur === 'All' || p.c === cur });
+    $('#pgrid').innerHTML = list.length ? list.map(function (p, i) { return '<button type="button" data-i="' + i + '" aria-label="Open photo: ' + p.a.replace(/"/g, '&quot;') + '"><img src="' + p.s + '" alt="' + p.a.replace(/"/g, '&quot;') + '" loading="lazy"></button>' }).join('') : '<p class="photo-empty">Their photos will appear here as soon as you add them.</p>';
     $$('#tabs button').forEach(function (b) { b.setAttribute('aria-selected', b.textContent.split(' ')[0] === cur) });
   }
-  $('#tabs').innerHTML = cats.map(function (c) { var n = c === 'All' ? PHOTOS.length : PHOTOS.filter(function (p) { return p.c === c }).length; return '<button type="button" role="tab">' + c + ' <small>' + n + '</small></button>' }).join('');
+  $('#tabs').innerHTML = cats.map(function (c) { var n = c === 'All' ? photos.length : photos.filter(function (p) { return p.c === c }).length; return '<button type="button" role="tab">' + c + ' <small>' + n + '</small></button>' }).join('');
   $$('#tabs button').forEach(function (b, i) { b.addEventListener('click', function () { cur = cats[i]; render() }) });
   render();
   var lb = $('#lb'), li = $('#li'), lc = $('#lc'), ix = 0, lastB = null;
@@ -74,12 +75,12 @@
   lb.addEventListener('touchend', function (e) { if (sx === null) return; var d = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(d) > 50) show(d < 0 ? ix + 1 : ix - 1) }, { passive: true });
 
   /* prayers */
-  var pr = ["May this new age open doors that no one can shut.", "May God give you wisdom in every decision and peace in every season.", "May your hard work be rewarded, and your project end in success.", "May you always be surrounded by people who love and encourage you.", "May your health be strong and your joy overflow all year.", "May everything you lay your hands on prosper.", "Happy birthday, Precious. This year will be your best yet."], pi = 0;
+  var pr = settings.prayers || ["May this new age open doors that no one can shut.", "May God give you wisdom in every decision and peace in every season.", "May your hard work be rewarded, and your project end in success.", "May you always be surrounded by people who love and encourage you.", "May your health be strong and your joy overflow all year.", "May everything you lay your hands on prosper.", "Happy birthday, Precious. This year will be your best yet."], pi = 0;
   $('#pn').addEventListener('click', function () { $('#pt').textContent = pr[pi % pr.length]; pi++; this.textContent = 'Open another prayer'; if (pi === pr.length) burst() });
 
   /* WhatsApp wish */
-  var num = '2349092643159', wa = $('#wa'), wn = $('#wn'), wt = $('#wt'), ww = $('#ww');
-  function link() { var who = wn.value.trim(), m = wt.value.trim(); wa.href = 'https://wa.me/' + num + '?text=' + encodeURIComponent('Happy birthday Precious! \uD83C\uDF89\n\n' + m + (who ? '\n\n- ' + who : '')) }
+  var num = String(settings.whatsappNumber || '2349092643159').replace(/\D/g, ''), greeting = settings.wishGreeting || 'Happy birthday Precious! \uD83C\uDF89', wa = $('#wa'), wn = $('#wn'), wt = $('#wt'), ww = $('#ww');
+  function link() { var who = wn.value.trim(), m = wt.value.trim(); wa.href = 'https://wa.me/' + num + '?text=' + encodeURIComponent(greeting + '\n\n' + m + (who ? '\n\n- ' + who : '')) }
   wn.addEventListener('input', link); wt.addEventListener('input', link); link();
   wa.addEventListener('click', function (e) { if (!wt.value.trim()) { e.preventDefault(); ww.textContent = 'Please write your wish first.'; wt.focus() } else { ww.textContent = ''; link() } });
 })();
